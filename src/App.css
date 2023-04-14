@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.foodlist {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+body {
+  background-color: #282c34;
+  color: white;
+}
+
+.foodform {
+  border: #282c34;
+  border-radius: 5px;
+  background-color: aliceblue;
+  width: 33vw;
+  padding: 25px;
+  padding-bottom: 5px;
+  margin-left: 33vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
