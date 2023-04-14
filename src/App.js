@@ -2,6 +2,7 @@ import './App.css';
 import { Card, Row, Col, Divider, Input, Button } from 'antd';
 import foods from './foods.json';
 import React, { useState } from 'react';
+import FoodBox from './components/FoodBox';
 
 function App() {
 
@@ -12,11 +13,16 @@ function App() {
     <div className="App">
       <h1>IronNutrition</h1>
       {firstTenFoodList.map((food, index) => (
-      <div>
-        <p><b>{index}</b> - {food.name} </p>
-        <img src={food.image} width={100} />
-      </div>
+        
+          <FoodBox food={ {
+            name: food.name,
+            calories: food.calories,
+            image: food.image,
+            servings: food.servings
+          }} />
+
       ))}
+
 
     </div>
   );
