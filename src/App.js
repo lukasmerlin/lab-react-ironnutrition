@@ -4,14 +4,22 @@ import foods from './foods.json';
 import React, { useState } from 'react';
 import FoodBox from './components/FoodBox';
 import AddFoodForm from './components/AddFoodForm';
+import SearchBar from './components/SearchBar';
 
 function App() {
-
   const [foodList, setFoodList] = useState(foods);
   const [showForm, setShowForm] = useState(false);
+  const [filteredFoodList, setFilteredFoodList] = useState(foods);
 
   const addFood = (food) => {
     setFoodList([...foodList, food]);
+  };
+
+  const handleSearch = (query) => {
+    const filteredList = foods.filter((food) =>
+      food.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredFoodList(filteredList);
   };
 
   return (
@@ -24,18 +32,7 @@ function App() {
 
       {showForm && <AddFoodForm addFood={addFood} />}
 
-      <div className='foodlist'>
-        {foodList.map((food, index) => (
-          
-            <FoodBox food={ {
-              name: food.name,
-              calories: food.calories,
-              image: food.image,
-              servings: food.servings
-            }} />
-
-        ))}
-      </div>  
+      <SearchBar foodList={foodList} handleSearch={handleSearch} />
 
     </div>
   );
